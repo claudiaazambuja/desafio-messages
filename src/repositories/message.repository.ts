@@ -3,15 +3,18 @@ import prisma from '@/database';
 async function findMessage(id: number) {
     return prisma.message.findFirst({
         where: {
-            id,
-        }
+            id: {
+                equals: id,
+            },
+        },
     });
 }
+
 
 async function createMessage(text) {
     const result = await prisma.message.create({
         data: {
-         text
+            text
         }
     })
 

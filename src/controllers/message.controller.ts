@@ -17,9 +17,9 @@ async function messageById(req: Request, res: Response) {
 
 async function newMessage(req: Request, res: Response) {
     const { text } = req.body;
-    await messageService.create(text)
+    const createdMessage = await messageService.create(text)
 
-    return res.sendStatus(httpStatus.OK)
+    return res.status(httpStatus.CREATED).json(createdMessage)
 }
 
 

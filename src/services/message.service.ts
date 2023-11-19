@@ -16,14 +16,12 @@ async function getAllMessages() {
 }
 
 async function getMessageById(id: number) {
-    if (id === null || id === undefined) {
-        throw notFoundError;
+    if (typeof id !== 'number') {
+        throw notFoundError()
     }
 
     return await messageRepository.findMessage(id);
 }
-
-
 
 const messageService = {
     create,
